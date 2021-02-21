@@ -20,7 +20,7 @@ public partial class AStock : System.Web.UI.Page
         //capture the customer stock no
         AStock.CarModel = txtCarModel.Text;
         AStock.BHP = txtBHP.Text;
-        AStock.Price = txtPrice.Text;
+        //AStock.Price = Int32;
         AStock.DateAdded = DateTime.Now;
         //store the bjp in th esession
         Session["AStock"] = AStock;
