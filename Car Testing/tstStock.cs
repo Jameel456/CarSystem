@@ -100,9 +100,9 @@ namespace Car_Testing
             //create an instance of the class we want to create
             clsStock AStock = new clsStock();
             //boolean variable to store the results of the validartion
-            Boolean Found = false;
+            Boolean Found = true;
             //create some test data for the method
-            Int32 ModelNo = 23;
+            Int32 ModelNo = 1;
             //invoke the method
             Found = AStock.Find(ModelNo);
             //test to see if the result is true
@@ -119,11 +119,11 @@ namespace Car_Testing
             //boolean variablto record if the data is ok (assume it is ok)
             Boolean OK = true;
             //create some test data for the method
-            Int32 ModelNo = 21;
+            Int32 ModelNo = 1;
             //invokeing the method
             Found = AStock.Find(ModelNo);
             //check the address no
-            if (AStock.ModelNo != 21)
+            if (AStock.ModelNo != 1)
             {
                 OK = false;
             }
@@ -141,11 +141,11 @@ namespace Car_Testing
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 ModelNo = 21;
+            Int32 ModelNo = 1;
             //invoke the method
             Found = AStock.Find(ModelNo);
             //check the property
-            if (AStock.CarModel != "Test Car")
+            if (AStock.CarModel != "Mercedes A Class")
             {
                 OK = false;
             }
@@ -163,11 +163,11 @@ namespace Car_Testing
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 ModelNo = 21;
+            Int32 ModelNo = 1;
             //invoke the method
             Found = AStock.Find(ModelNo);
             //check the property
-            if (AStock.BHP != "532")
+            if (AStock.BHP != "120 BHP")
             {
                 OK = false;
             }
@@ -185,7 +185,7 @@ namespace Car_Testing
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 ModelNo = 21;
+            Int32 ModelNo = 1;
             //invoke the method
             Found = AStock.Find(ModelNo);
             //check the property
@@ -207,7 +207,7 @@ namespace Car_Testing
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 ModelNo = 21;
+            Int32 ModelNo = 1;
             //invoke the method
             Found = AStock.Find(ModelNo);
             //check the property
@@ -229,11 +229,11 @@ namespace Car_Testing
             //boolean variable to record if data is OK (assume it is}
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 ModelNo = 21;
+            Int32 ModelNo = 1;
             //invoke the method
             Found = AStock.Find(ModelNo);
             //check the property
-            if (AStock.DateAdded != Convert.ToDateTime("16/09/2015"))
+            if (AStock.DateAdded != Convert.ToDateTime("16/02/2019 00:00:00"))
             {
                 OK = false;
             }
