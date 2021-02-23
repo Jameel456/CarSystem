@@ -111,16 +111,31 @@ namespace CarClasses
 
         public bool Find(int modelNo)
         {
-            //set the priavate data members to test data with
-            mModelNo = 21;
-            mDateAdded = Convert.ToDateTime("16/9/2015");
-            mCarModel = "Test Car";
-            mBHP = "532";
-            mPrice = 1;
-            mAvailability = true;
-
-            //always return true
-            return true;
+            //create an instance for the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //add the paremter for the address not o search for
+            DB.AddParameter("@ModelNo", modelNo);
+            //execture the stored procedure
+            DB.Execute("sproc_tblStock_FilterByModelNo");
+            //if one record is found (theres hould be either one or zero!)
+            if (DB.Count == 1)
+            {
+                //copy the data from the data bacse to the private data members
+                mModelNo = Convert.ToInt32(DB.DataTable.Rows[0]["ModelNo"]);
+                mCarModel = Convert.ToString(DB.DataTable.Rows[0]["CarModel"]);
+                mBHP = Convert.ToString(DB.DataTable.Rows[0]["BHP"]);
+                mPrice = Convert.ToInt32(DB.DataTable.Rows[0]["Price"]);
+                mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["DateAdded"]);
+                mAvailability = Convert.ToBoolean(DB.DataTable.Rows[0]["Availability"]);
+                //return everything worked ok
+                return true;
+            }
+            //if no record was found then
+            else
+            {
+                //return false indicating a problem 
+                return false;
+            }
         }
     }
 }
