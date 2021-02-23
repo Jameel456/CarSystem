@@ -20,7 +20,7 @@ public partial class AStock : System.Web.UI.Page
         //capture the customer stock no
         AStock.CarModel = txtCarModel.Text;
         AStock.BHP = txtBHP.Text;
-        //AStock.Price = Int32;
+        //AStock.Price = txtPrice.Text.ToString;
         AStock.DateAdded = DateTime.Now;
         //store the bjp in th esession
         Session["AStock"] = AStock;
@@ -28,5 +28,28 @@ public partial class AStock : System.Web.UI.Page
         Response.Redirect("StockViewer.aspx");
 
 
+    }
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+        //create an instance of the qddress class
+        clsStock AStock = new clsStock();
+        //variable to store in the primary key
+        Int32 ModelNo;
+        //variable 
+        Boolean Found=false;
+        //get primary key
+        ModelNo = Convert.ToInt32(txtModelNo.Text);
+        //find the record
+        Found = AStock.Find(ModelNo);
+        //if found
+        if (Found == true)
+        {
+            //display the  values of the proerptries in the forkm
+            txtBHP.Text = AStock.BHP;
+            txtCarModel.Text = AStock.CarModel;
+            txtDateAdded.Text = AStock.DateAdded.ToString();
+            txtPrice.Text = AStock.Price.ToString();
+        }
     }
 }
