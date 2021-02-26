@@ -17,7 +17,7 @@ public partial class StockViewer : System.Web.UI.Page
         //display the car model for ths entry
         Response.Write(AStock.CarModel);
         Response.Write(AStock.BHP);
-        //Response.Write(AStock.Price);
+        Response.Write(AStock.Price);
         Response.Write(AStock.DateAdded);
     }
 
