@@ -137,5 +137,79 @@ namespace CarClasses
                 return false;
             }
         }
+
+        public string Valid(string carModel, string bHP, int price, string dateAdded)
+        {
+            //create a string variable to store the error
+            String Error = "";
+            //create a temporary varibale to store datat values
+            DateTime DateTemp;
+            //this sees if the string is less than 1 or more than 10000000
+            if (price < 1 | price > 100000000)
+            {
+                //records the error
+                Error = Error + "The price number must be between 1 and 100 MILLION : ";
+            }
+
+            try
+            {
+                Int32 Temp;
+                Temp = Convert.ToInt32(price);
+            }
+            catch
+            {
+                Error = Error + "The price must be a number : ";
+            }
+
+            //if the BHP is blank
+            if (bHP.Length == 0)
+            {
+                //record error
+                Error = Error + "The BHP may not be blank : ";
+            }
+            //if the bhp no is grewter than 6
+            if (bHP.Length > 8)
+            {
+                //record the error
+                Error = Error + "The BHP must be less than 8 characaters : ";
+            }
+
+            if (carModel.Length == 0)
+            {
+                //record error
+                Error = Error + "The Car Model may not be blank : ";
+            }
+            //if the bhp no is grewter than 6
+            if (carModel.Length > 50)
+            {
+                //record the error
+                Error = Error + "The Car Model must be less than 8 characaters : ";
+            }
+
+            try
+            {
+                //copy the date added value to the datetemp variable
+                DateTemp = Convert.ToDateTime(dateAdded);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the past : ";
+                }
+
+                //check to see if the date is greater than today's date
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "The date was no a valid date : ";
+            }
+
+            //return error messages
+            return Error;
+        }
     }
 }

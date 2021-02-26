@@ -17,16 +17,31 @@ public partial class AStock : System.Web.UI.Page
     {
         //create a new instance of clsAstock
         clsStock AStock = new clsStock();
-        //capture the customer stock no
-        AStock.CarModel = txtCarModel.Text;
-        AStock.BHP = txtBHP.Text;
-        //AStock.Price = txtPrice.Text.ToString;
-        AStock.DateAdded = DateTime.Now;
-        //store the bjp in th esession
-        Session["AStock"] = AStock;
-        //redirect the viewer page
-        Response.Redirect("StockViewer.aspx");
-
+        //capture stock no
+        string CarModel = txtCarModel.Text;
+        string BHP = txtBHP.Text;
+        Int32 Price = Convert.ToInt32(txtPrice.Text);
+        string DateAdded = txtDateAdded.Text;
+        string Error = "";
+        //Validate the data
+        Error = AStock.Valid(CarModel, BHP, Price, DateAdded);
+        if (Error == "")
+        {
+            //capture the  stock no
+            AStock.CarModel = txtCarModel.Text;
+            AStock.BHP = txtBHP.Text;
+            AStock.Price = Convert.ToInt32(txtPrice.Text);
+            AStock.DateAdded = Convert.ToDateTime(txtDateAdded.Text);
+            //store the bjp in th esession
+            Session["AStock"] = AStock;
+            //redirect the viewer page
+            Response.Redirect("StockViewer.aspx");
+        }
+        else
+        {
+            //display the error message
+            lblError.Text = Error;
+        }
 
     }
 
