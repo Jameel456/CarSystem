@@ -213,7 +213,7 @@ namespace Car_Testing
             //invoke the method
             Found = AStaff.Find(StaffID);
             //check the staff id
-            if (AStaff.StaffTelNumber != "0787172872")
+            if (AStaff.StaffTelNumber != "07871740971")
             {
                 OK = false;
             }

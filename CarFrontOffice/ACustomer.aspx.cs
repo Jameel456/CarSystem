@@ -18,15 +18,45 @@ public partial class ACustomer : System.Web.UI.Page
         //create a new instance of clsCustomer
         clsCustomer ACustomer = new clsCustomer();
         //capture the customer name
-        ACustomer.CustomerName = txtCustomerName.Text;
-        ACustomer.CustomerAddress = txtCustomerAddress.Text;
-        ACustomer.CustomerTelNumber = txtCustomerTelNumber.Text;
-        ACustomer.DateJoined = DateTime.Now;
-   
-        //store the address in the session object 
-        Session["ACustomer"] = ACustomer;
-        //redirect to the viewer page
-        Response.Redirect("CustomerViewer.aspx");
+        string CustomerName = txtCustomerName.Text;
+        //capture the customer telephone number
+        string CustomerTelNumber =txtCustomerTelNumber.Text;
+        //capture the customer address
+        string CustomerAddress = txtCustomerAddress.Text;
+        //capture the date joined
+        string DateJoined = txtDateJoined.Text;
+        //Capture Error
+        string Error = "";
+        //validate the data
+        Error = ACustomer.Valid(CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
+        if (Error == "")
+        {
+            //capture the customer name
+            ACustomer.CustomerName = CustomerName;
+            //capture the customer telephone number
+            ACustomer.CustomerTelNumber = CustomerTelNumber;
+            //capture the customer address
+            ACustomer.CustomerAddress = CustomerAddress;
+            //capture the date joined
+            ACustomer.DateJoined = Convert.ToDateTime(DateJoined);
+
+            //store the address in the session object 
+            Session["ACustomer"] = ACustomer;
+            //redirect to the viewer page
+            Response.Redirect("CustomerViewer.aspx");
+
+        }
+        else
+        {
+            lblError.Text = Error;
+        }
+        //capture the customer name
+        // ACustomer.CustomerName = txtCustomerName.Text;
+        //  ACustomer.CustomerAddress = txtCustomerAddress.Text;
+        //  ACustomer.CustomerTelNumber = txtCustomerTelNumber.Text;
+        //  ACustomer.DateJoined = DateTime.Now;
+
+        
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
@@ -50,5 +80,15 @@ public partial class ACustomer : System.Web.UI.Page
             txtCustomerTelNumber.Text = ACustomer.CustomerTelNumber;
             txtDateJoined.Text = ACustomer.DateJoined.ToString();
         }
+    }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void txtCustomerAddress_TextChanged(object sender, EventArgs e)
+    {
+
     }
 }
