@@ -126,9 +126,77 @@ namespace CarClasses
                 //return false indicating a problem 
                 return false;
             }
-        }   
+        }
 
-       
+        public string Valid(string staffName, string staffAddress, string staffTelNumber, string dateJoined)
+        {
+            //create a string variable to store the erro
+            String Error = "";
+            //create a temporary variable to store date values
+            DateTime DateTemp;
+            //if the StaffName is blank
+            if (staffName.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Staff Name may not be blank : ";
+            }
+            //if the staff name is greater than 50 characters
+            if (staffName.Length > 50)
+            {
+                //record the error
+                Error = Error + "The Staff Name must be less than 50 characters : ";
+            }
+            try
+            {
+                //copy the dateJoined value to the DateTemp variable
+
+                DateTemp = Convert.ToDateTime(dateJoined);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the past : ";
+                }
+                //check to see if the date is greater than todays date
+
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    //record the error 
+
+                    Error = Error + "The date cannot be in the future";
+                }
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "The date was not a valid date";
+            }
+
+            if (staffAddress.Length == 0)
+            {
+                //record the error
+                Error = Error + "the staff address may not be blank : ";
+            }
+            //if the staff address is greater than 50 characters
+            if (staffAddress.Length > 50)
+            {
+                //record the error
+                Error = Error + "The staff address must be less than 50 characters : ";
+            }
+            if (staffTelNumber.Length == 0)
+            {
+                //record the error
+                Error = Error + "The staff telephone number may not be blank : ";
+            }
+            //if the staffTelnumber is greater than 50 characters
+            if (staffTelNumber.Length > 11)
+            {
+                //record the error
+                Error = Error + "The staff telephone number must be less than 12 characters : ";
+            }
+            
+            //return any error messages           
+            return Error;
+        }
     }
 
 }

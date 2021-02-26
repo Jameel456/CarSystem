@@ -18,14 +18,37 @@ public partial class AStaff : System.Web.UI.Page
         //create a new instance of clsStaff
         clsStaff AStaff = new clsStaff();
         //capture the staff name
-        AStaff.StaffName = txtStaffName.Text;
-        AStaff.StaffAddress = txtStaffAddress.Text;
-        AStaff.StaffTelNumber = txtStaffTelNumber.Text;
-        AStaff.DateJoined = DateTime.Now;
-        //store the address in the session object
-        Session["AStaff"] = AStaff;
-        //redirect to the viewer page 
-        Response.Redirect("StaffViewer.aspx");
+        string StaffName = txtStaffName.Text;
+        //capture the staff address
+        string StaffAddress = txtStaffAddress.Text;
+        //capture the staff tel number
+        string StaffTelNumber = txtStaffTelNumber.Text;
+        //capture date joined
+        string DateJoined =txtDateJoined.Text;
+        //variable to store any error mesages
+        string Error="";
+        //validate the data
+        Error = AStaff.Valid(StaffName, StaffAddress, StaffTelNumber, DateJoined);
+        if (Error == "")
+        {
+            //capture the staff name
+            AStaff.StaffName = StaffName;
+            //capture the staff address
+            AStaff.StaffAddress = StaffAddress;
+            //capture the staff tel number
+            AStaff.StaffTelNumber = StaffTelNumber;
+            //capture date joined
+            AStaff.DateJoined = Convert.ToDateTime( DateJoined);
+            //store the address in the session object
+            Session["AStaff"] = AStaff;
+            //redirect to the viewer page 
+            Response.Redirect("StaffViewer.aspx");
+        }
+        else
+        {
+            //display the error message
+            lblError.Text = Error;
+        }
     }
 
     protected void txtStaffName_TextChanged(object sender, EventArgs e)
