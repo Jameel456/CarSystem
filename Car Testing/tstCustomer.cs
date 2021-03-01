@@ -6,7 +6,7 @@ namespace Car_Testing
 {
     [TestClass]
 
- 
+
     public class tstCustomer
     {
         //good test data
@@ -268,13 +268,13 @@ namespace Car_Testing
 
         [TestMethod]
         public void CustomerNameMinLessOne()
-       {
+        {
             //create an instance of the class we want to create
             clsCustomer ACustomer = new clsCustomer();
             //string varaible to store the results of the validation
             String Error = "";
             //create some test data to pass to the method
-           string CustomerName = ""; 
+            string CustomerName = "";
             //invoke the method
             Error = ACustomer.Valid(CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
             //test to see if the results is true
@@ -283,7 +283,7 @@ namespace Car_Testing
         }
 
         [TestMethod]
-        public void CustomerNameNoMin()
+        public void CustomerNameMin()
         {
             //create an instance of the class we want to create
             clsCustomer ACustomer = new clsCustomer();
@@ -538,7 +538,7 @@ namespace Car_Testing
         }
 
         [TestMethod]
-        public void CustomerAddressNoMin()
+        public void CustomerAddressMin()
         {
             //create an instance of the class we want to create
             clsCustomer ACustomer = new clsCustomer();
