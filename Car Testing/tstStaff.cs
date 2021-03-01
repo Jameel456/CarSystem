@@ -3,7 +3,7 @@ using CarClasses;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Car_Testing
-{
+{ 
 
 
 
@@ -315,6 +315,21 @@ namespace Car_Testing
         }
 
         [TestMethod]
+        public void StaffNameMin()
+        {
+            //create an instance of the class we want to create
+            clsStaff AStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "a";
+            //create some test data to pass to the method
+            string StaffName = "Ha"; // this should be ok
+            //invoke the method
+            Error = AStaff.Valid(StaffName, StaffAddress, StaffTelNumber, DateJoined);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
         public void StaffNameMaxLessOne()
         {
             //create an instance of the class we want to create
@@ -478,6 +493,29 @@ namespace Car_Testing
         }
 
         [TestMethod]
+        public void DateJoinedExtremeMax()
+        {
+            //create an instance of the class we want to create
+            clsStaff AStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is plus 1 day
+            TestDate = TestDate.AddDays(100);
+            //convert the date variable to a string variable
+            string DateJoined = TestDate.ToString();
+            //invoke the method
+            Error = AStaff.Valid(StaffName, StaffAddress, StaffTelNumber, DateJoined);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+
+        [TestMethod]
 
         public void DateJoinedInvalidData()
         {
@@ -524,6 +562,23 @@ namespace Car_Testing
             Assert.AreEqual(Error, "");
 
         }
+
+        [TestMethod]
+        public void StaffAddressMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsStaff AStaff = new clsStaff();
+            //string varaible to store the results of the validation
+            String Error = "";
+            //create some test data to pass to the method
+            string StaffAddress = "";
+            //invoke the method
+            Error = AStaff.Valid(StaffName, StaffAddress, StaffTelNumber, DateJoined);
+            //test to see if the results is true
+            Assert.AreNotEqual(Error, "");
+
+        }
+
 
         public void StaffAddressMaxLessOne()
         {
@@ -736,3 +791,4 @@ namespace Car_Testing
 
     }
 }
+
