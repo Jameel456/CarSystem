@@ -54,6 +54,7 @@
     <Compile Include="tstStaff.cs" />
     <Compile Include="tstStaffCollection.cs" />
     <Compile Include="tstStock.cs" />
+    <Compile Include="tstStockCollection.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
