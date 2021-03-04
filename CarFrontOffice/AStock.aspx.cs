@@ -15,6 +15,13 @@ public partial class AStock : System.Web.UI.Page
 
     protected void btnOK_Click(object sender, EventArgs e)
     {
+        //ads the new record
+        Add();
+        //all done so redirect back to main page
+        Response.Redirect("DefaultStock.aspx");
+    
+    
+    
         //create a new instance of clsAstock
         clsStock AStock = new clsStock();
         //capture stock no
@@ -42,8 +49,9 @@ public partial class AStock : System.Web.UI.Page
             //display the error message
             lblError.Text = Error;
         }
-
+        
     }
+    
 
     protected void btnFind_Click(object sender, EventArgs e)
     {
@@ -65,6 +73,28 @@ public partial class AStock : System.Web.UI.Page
             txtCarModel.Text = AStock.CarModel;
             txtDateAdded.Text = AStock.DateAdded.ToString();
             txtPrice.Text = AStock.Price.ToString();
+        }
+    }
+
+    void Add()
+    {
+        //create an instance of the address book
+        clsStockCollection StockBook = new CarClasses.clsStockCollection();
+        //validate the data on the webform
+        String Error = StockBook.ThisStock.Valid(txtCarModel.Text, txtBHP.Text, Convert.ToInt32(txtPrice.Text), txtDateAdded.Text);
+        //if the data is ok then add it to obkect
+        if (Error == "")
+        {
+            //get the data entered by the user
+            StockBook.ThisStock.CarModel = txtCarModel.Text;
+            StockBook.ThisStock.BHP = txtBHP.Text;
+            StockBook.ThisStock.Price = Convert.ToInt32(txtPrice.Text);
+            StockBook.ThisStock.DateAdded = Convert.ToDateTime(txtDateAdded.Text);
+        }
+        else
+        {
+            //report an error
+            lblError.Text = "There were problems with the data entered" + Error;
         }
     }
 }

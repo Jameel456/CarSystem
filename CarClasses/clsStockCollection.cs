@@ -7,6 +7,9 @@ namespace CarClasses
 
         //private data member for the list
         List<clsStock> mStockList = new List<clsStock>();
+        //provae data menber for this address
+        clsStock mThisStock = new clsStock();
+
         public List<clsStock> StockList
         {
             get
@@ -34,7 +37,40 @@ namespace CarClasses
             }
         }
 
-        public clsStock ThisStock { get; set; }
+       
+        public clsStock ThisStock
+        {
+            get
+            {
+                //return the private data
+                return mThisStock;
+            }
+            set
+            {
+                //set the private data
+                mThisStock = value;
+            }
+        }
+
+            
+        public int Add()
+        {
+            //adds the new record to the database on the values of mThisStock
+            //connects to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@CarModel", mThisStock.CarModel);
+            DB.AddParameter("@BHP", mThisStock.BHP);
+            DB.AddParameter("@Price", mThisStock.Price);
+            DB.AddParameter("@Availability", mThisStock.Availability);
+            DB.AddParameter("@DateAdded", mThisStock.DateAdded);
+            //execute the query returining the primary key value
+            return DB.Execute("sproc_tblStock_Insert");
+        }
+
+        
+
+       
 
         //construtor for the class
         public clsStockCollection()

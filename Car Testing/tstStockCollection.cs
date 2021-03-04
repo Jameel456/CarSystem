@@ -88,7 +88,33 @@ namespace Car_Testing
             //test to see that the two values are the same
             Assert.AreEqual(AllStocks.Count, TestList.Count);
         }
-      
+
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            //create an nstance for theclass we want to screate
+            clsStockCollection AllStocks = new clsStockCollection();
+            //create the item of test data
+            clsStock TestItem = new clsStock();
+            //var to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.Availability = true;
+            TestItem.ModelNo = 1;
+            TestItem.CarModel = "Mercedes A Class Test Again";
+            TestItem.BHP = "420 BHP";
+            TestItem.Price = 1;
+            TestItem.DateAdded = DateTime.Now.Date;
+            //Setup the his address to test data
+            AllStocks.ThisStock = TestItem;
+            //add the record
+            PrimaryKey = AllStocks.Add();
+            //find the record
+            AllStocks.ThisStock.Find(PrimaryKey);
+            //test to see that the two values are the same
+            Assert.AreEqual(AllStocks.ThisStock, TestItem);
+        }
+
 
     }
 }
