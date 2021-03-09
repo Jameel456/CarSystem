@@ -12,7 +12,7 @@
             <asp:Label ID="lblCarModelSearch" runat="server" style="z-index: 1; left: 18px; top: 362px; position: absolute" Text="Please Enter a Car Model"></asp:Label>
             <asp:TextBox ID="txtCarModelSearch" runat="server" style="z-index: 1; left: 15px; top: 393px; position: absolute; width: 430px"></asp:TextBox>
             <asp:Button ID="btnApply" runat="server" style="z-index: 1; left: 16px; top: 448px; position: absolute; width: 133px" Text="Apply" />
-            <asp:Button ID="btnDisplayAll" runat="server" style="z-index: 1; left: 188px; top: 448px; position: absolute; width: 163px" Text="DisplayAll" />
+            <asp:Button ID="btnDisplayAll" runat="server" style="z-index: 1; left: 188px; top: 448px; position: absolute; width: 163px" Text="DisplayAll" OnClick="btnDisplayAll_Click" />
             <asp:Button ID="btnEdit" runat="server" style="z-index: 1; left: 80px; top: 496px; position: absolute" Text="Edit" />
             <asp:Button ID="btnDelete" runat="server" style="z-index: 1; left: 141px; top: 498px; position: absolute" Text="Delete" />
         </div>

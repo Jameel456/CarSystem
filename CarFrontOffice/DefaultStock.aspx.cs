@@ -38,4 +38,9 @@ public partial class DefaultStock : System.Web.UI.Page
         //reirect to entry page
         Response.Redirect("AStock.aspx");
     }
+
+    protected void btnDisplayAll_Click(object sender, EventArgs e)
+    {
+
+    }
 }

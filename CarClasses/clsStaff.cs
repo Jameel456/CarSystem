@@ -128,13 +128,14 @@ namespace CarClasses
             }
         }
 
-        public string Valid(string staffName, string staffAddress, string staffTelNumber, string dateJoined)
+        public string Valid(string staffName, string staffAddress, string staffTelNumber, string dateJoined, string staffID)
         {
             //create a string variable to store the erro
             String Error = "";
             //create a temporary variable to store date values
             DateTime DateTemp;
             //if the StaffName is blank
+            Int32 IntTemp;
             if (staffName.Length == 0)
             {
                 //record the error
@@ -193,7 +194,31 @@ namespace CarClasses
                 //record the error
                 Error = Error + "The staff telephone number must be less than 12 characters : ";
             }
+
+            try
+            {
+                //copy the datejoined value to the datetemp variable
+                IntTemp = Convert.ToInt32(staffID);
+                if (IntTemp < 1)
+                {
+                    //record the error 
+                    Error = Error + "The record needs to be a valid record :";
+                }
+
+                if (IntTemp > 500)
+                {
+                    //record the error 
+                    Error = Error + "The record cannot be more than 500 :";
+                }
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "The record was not a valid record";
+            }
             
+
+
             //return any error messages           
             return Error;
         }

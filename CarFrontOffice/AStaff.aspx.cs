@@ -26,9 +26,10 @@ public partial class AStaff : System.Web.UI.Page
         //capture date joined
         string DateJoined =txtDateJoined.Text;
         //variable to store any error mesages
+        string StaffID = txtStaffID.Text;
         string Error="";
         //validate the data
-        Error = AStaff.Valid(StaffName, StaffAddress, StaffTelNumber, DateJoined);
+        Error = AStaff.Valid(StaffName, StaffAddress, StaffTelNumber, DateJoined, StaffID);
         if (Error == "")
         {
             //capture the staff name
@@ -40,6 +41,7 @@ public partial class AStaff : System.Web.UI.Page
             //capture date joined
             AStaff.DateJoined = Convert.ToDateTime( DateJoined);
             //store the address in the session object
+            AStaff.StaffID = Convert.ToInt32(txtStaffID);
             Session["AStaff"] = AStaff;
             //redirect to the viewer page 
             Response.Redirect("StaffViewer.aspx");
