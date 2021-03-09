@@ -8,6 +8,8 @@ using CarClasses;
 
 public partial class ACustomer : System.Web.UI.Page
 {
+    public object CustomerID { get; private set; }
+
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -18,6 +20,8 @@ public partial class ACustomer : System.Web.UI.Page
         //create a new instance of clsCustomer
         clsCustomer ACustomer = new clsCustomer();
         //capture the customer name
+        
+        string CustomerID = txtCustomerID.Text;
         string CustomerName = txtCustomerName.Text;
         //capture the customer telephone number
         string CustomerTelNumber =txtCustomerTelNumber.Text;
@@ -28,9 +32,10 @@ public partial class ACustomer : System.Web.UI.Page
         //Capture Error
         string Error = "";
         //validate the data
-        Error = ACustomer.Valid(CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
+        Error = ACustomer.Valid(CustomerID, CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
         if (Error == "")
         {
+            ACustomer.CustomerID = Convert.ToInt32(txtCustomerID);
             //capture the customer name
             ACustomer.CustomerName = CustomerName;
             //capture the customer telephone number

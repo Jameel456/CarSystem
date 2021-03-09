@@ -29,6 +29,13 @@ namespace CarClasses
                 mActive = value;
             }
         }
+
+        
+
+
+
+
+
         //DateADDED private data member variable
         public DateTime DateJoined
         {
@@ -131,11 +138,12 @@ namespace CarClasses
             }
         }
 
-        public string Valid(string customerName, string customerTelNumber, string customerAddress, string dateJoined)
+        public string Valid(string customerID, string customerName, string customerTelNumber, string customerAddress, string dateJoined)
         {
             //create a string variable to store the error
             String Error = "";
             //create a temporary variable to store date values
+            Int32 IntTemp;
             DateTime DateTemp;
             if (customerName.Length == 0)
             {
@@ -153,9 +161,9 @@ namespace CarClasses
                 //copy the datejoined value to the datetemp variable
                 DateTemp = Convert.ToDateTime(dateJoined);
                 if (DateTemp < DateTime.Now.Date)
-               {
+                {
                     //record the error 
-                   Error = Error + "The date cannot be in the past :";
+                    Error = Error + "The date cannot be in the past :";
                 }
 
                 if (DateTemp > DateTime.Now.Date)
@@ -169,49 +177,64 @@ namespace CarClasses
                 //record the error
                 Error = Error + "the date was not a valid date :";
             }
-
-            if (customerAddress.Length == 0)
             {
-                //record the error
-                Error = Error + "the customer address may not be blank : ";
-            }
-            
+               
+
+                if (customerAddress.Length == 0)
+                {
+                    //record the error
+                    Error = Error + "the customer address may not be blank : ";
+                }
+
                 //if the customer address is greater than 50 characters
                 if (customerAddress.Length > 50)
                 {
                     //record the error
                     Error = Error + "The customer address must be less than 50 characters!";
                 }
-            {
-                if (customerTelNumber.Length == 0)
                 {
-                    //record the error
-                    Error = Error + "the customer telephone number may not be blank : ";
+                    if (customerTelNumber.Length == 0)
+                    {
+                        //record the error
+                        Error = Error + "the customer telephone number may not be blank : ";
+                    }
+
+                    //if the customer address is greater than 12 characters
+                    if (customerTelNumber.Length > 11)
+                    {
+                        //record the error
+                        Error = Error + "The customer telephone number must be less than 12 characters!";
+                    }
                 }
 
-                //if the customer address is greater than 12 characters
-                if (customerTelNumber.Length > 11)
+                try
+                {
+                    //copy the datejoined value to the datetemp variable
+                    IntTemp = Convert.ToInt32(customerID);
+                    if (IntTemp < 1)
+                    {
+                        //record the error 
+                        Error = Error + "The record needs to be a valid record :";
+                    }
+
+                    if (IntTemp > 500)
+                    {
+                        //record the error 
+                        Error = Error + "The record cannot be more than 500 :";
+                    }
+                }
+
+                catch
                 {
                     //record the error
-                    Error = Error + "The customer telephone number must be less than 12 characters!";
+                    Error = Error + "the record was not a valid  :";
                 }
+
+
+                //return any error messages
+                return Error;
             }
-            
-         
 
-            //return any error messages
-            return Error;
         }
-
-
-        //set the private data members to the test data value
-        //   mCustomerID = 20;
-        //   mDateJoined = Convert.ToDateTime("17/09/2019");
-        //   mCustomerName = "Test Customer Name";
-        //   mCustomerTelNumber = "07864128973";
-        //     mCustomerAddress = "21 London Road";
-        //     mActive = true;
-        //alwsy return true
-        //   return true;
-    }
+        }
     }
