@@ -11,10 +11,13 @@ namespace Car_Testing
     {
         //good test data
         //create some test data to pass to the method
+        string CustomerID = 1.ToString();
         string CustomerName = "Jeff Adams";
         string CustomerAddress = "45 Leicester Street";
         string CustomerTelNumber = "07896432654";
         string DateJoined = DateTime.Now.Date.ToString();
+
+       
 
         [TestMethod]
         public void InstanceOK()
@@ -136,6 +139,8 @@ namespace Car_Testing
             Assert.IsTrue(OK);
 
         }
+
+     
 
         [TestMethod]
         public void TestDateJoinedFound()
@@ -260,7 +265,7 @@ namespace Car_Testing
             //string varaible to store the results of the validation
             String Error = "";
             //invoke the method
-            Error = ACustomer.Valid(CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
+            Error = ACustomer.Valid(CustomerID, CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
             //test to see if the results is true
             Assert.AreEqual(Error, "");
 
@@ -276,7 +281,7 @@ namespace Car_Testing
             //create some test data to pass to the method
             string CustomerName = "";
             //invoke the method
-            Error = ACustomer.Valid(CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
+            Error = ACustomer.Valid(CustomerID, CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
             //test to see if the results is true
             Assert.AreNotEqual(Error, "");
 
@@ -287,12 +292,13 @@ namespace Car_Testing
         {
             //create an instance of the class we want to create
             clsCustomer ACustomer = new clsCustomer();
+            
             //string varaible to store the results of the validation
             String Error = "";
             //create some test data to pass to the method
             string CustomerName = "a";
             //invoke the method
-            Error = ACustomer.Valid(CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
+            Error = ACustomer.Valid(CustomerID, CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
             //test to see if the results is true
             Assert.AreEqual(Error, "");
 
@@ -308,7 +314,7 @@ namespace Car_Testing
             //create some test data to pass to the method
             string CustomerName = "aa";
             //invoke the method
-            Error = ACustomer.Valid(CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
+            Error = ACustomer.Valid(CustomerID, CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
             //test to see if the results is true
             Assert.AreEqual(Error, "");
 
@@ -324,7 +330,7 @@ namespace Car_Testing
             //create some test data to pass to the method
             string CustomerName = "0123456789012345678901234567890123456789012345678";
             //invoke the method
-            Error = ACustomer.Valid(CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
+            Error = ACustomer.Valid(CustomerID, CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
             //test to see if the results is true
             Assert.AreEqual(Error, "");
 
@@ -340,7 +346,7 @@ namespace Car_Testing
             //create some test data to pass to the method
             string CustomerName = "01234567890123456789012345678901234567890123456789";
             //invoke the method
-            Error = ACustomer.Valid(CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
+            Error = ACustomer.Valid(CustomerID, CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
             //test to see if the results is true
             Assert.AreEqual(Error, "");
 
@@ -356,7 +362,7 @@ namespace Car_Testing
             //create some test data to pass to the method
             string CustomerName = "0123456789012345678901234";
             //invoke the method
-            Error = ACustomer.Valid(CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
+            Error = ACustomer.Valid(CustomerID, CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
             //test to see if the results is true
             Assert.AreEqual(Error, "");
 
@@ -372,7 +378,7 @@ namespace Car_Testing
             //create some test data to pass to the method
             string CustomerName = "012345678901234567890123456789012345678901234567890";
             //invoke the method
-            Error = ACustomer.Valid(CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
+            Error = ACustomer.Valid(CustomerID, CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
             //test to see if the results is true
             Assert.AreNotEqual(Error, "");
 
@@ -389,7 +395,7 @@ namespace Car_Testing
             string CustomerName = "";
             CustomerName = CustomerName.PadRight(500, 'a');
             //invoke the method
-            Error = ACustomer.Valid(CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
+            Error = ACustomer.Valid(CustomerID, CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
             //test to see if the results is true
             Assert.AreNotEqual(Error, "");
 
@@ -411,7 +417,7 @@ namespace Car_Testing
             //Convert the date variable to string variable
             string DateJoined = TestDate.ToString();
             //invoke the method
-            Error = ACustomer.Valid(CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
+            Error = ACustomer.Valid(CustomerID, CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
             //test to see if the results is correct
             Assert.AreNotEqual(Error, "");
 
@@ -434,7 +440,7 @@ namespace Car_Testing
             //Convert the date variable to string variable
             string DateJoined = TestDate.ToString();
             //invoke the method
-            Error = ACustomer.Valid(CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
+            Error = ACustomer.Valid(CustomerID, CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
             //test to see if the results is correct
             Assert.AreNotEqual(Error, "");
 
@@ -454,7 +460,7 @@ namespace Car_Testing
             //Convert the date variable to string variable
             string DateJoined = TestDate.ToString();
             //invoke the method
-            Error = ACustomer.Valid(CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
+            Error = ACustomer.Valid(CustomerID, CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
             //test to see if the results is correct
             Assert.AreEqual(Error, "");
 
@@ -476,7 +482,7 @@ namespace Car_Testing
             //Convert the date variable to string variable
             string DateJoined = TestDate.ToString();
             //invoke the method
-            Error = ACustomer.Valid(CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
+            Error = ACustomer.Valid(CustomerID, CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
             //test to see if the results is correct
             Assert.AreNotEqual(Error, "");
 
@@ -498,7 +504,7 @@ namespace Car_Testing
             //Convert the date variable to string variable
             string DateJoined = TestDate.ToString();
             //invoke the method
-            Error = ACustomer.Valid(CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
+            Error = ACustomer.Valid(CustomerID, CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
             //test to see if the results is correct
             Assert.AreNotEqual(Error, "");
 
@@ -514,7 +520,7 @@ namespace Car_Testing
             //set the datejoined to a non date value
             string DateJoined = "this is not a date!";
             //invoke the method
-            Error = ACustomer.Valid(CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
+            Error = ACustomer.Valid(CustomerID, CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
 
@@ -531,7 +537,7 @@ namespace Car_Testing
             //create some test data to pass to the method
             string CustomerAddress = "";
             //invoke the method
-            Error = ACustomer.Valid(CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
+            Error = ACustomer.Valid(CustomerID, CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
             //test to see if the results is true
             Assert.AreNotEqual(Error, "");
 
@@ -547,7 +553,7 @@ namespace Car_Testing
             //create some test data to pass to the method
             string CustomerAddress = "a";
             //invoke the method
-            Error = ACustomer.Valid(CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
+            Error = ACustomer.Valid(CustomerID, CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
             //test to see if the results is true
             Assert.AreEqual(Error, "");
 
@@ -563,11 +569,13 @@ namespace Car_Testing
             //create some test data to pass to the method
             string CustomerAddress = "aa";
             //invoke the method
-            Error = ACustomer.Valid(CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
+            Error = ACustomer.Valid(CustomerID, CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
             //test to see if the results is true
             Assert.AreEqual(Error, "");
 
         }
+
+        [TestMethod]
 
         public void CustomerAddressMaxLessOne()
         {
@@ -578,7 +586,7 @@ namespace Car_Testing
             //create some test data to pass to the method
             string CustomerAddress = "0123456789012345678901234567890123456789012345678";
             //invoke the method
-            Error = ACustomer.Valid(CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
+            Error = ACustomer.Valid(CustomerID, CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
             //test to see if the results is true
             Assert.AreEqual(Error, "");
 
@@ -594,7 +602,7 @@ namespace Car_Testing
             //create some test data to pass to the method
             string CustomerAddress = "01234567890123456789012345678901234567890123456789";
             //invoke the method
-            Error = ACustomer.Valid(CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
+            Error = ACustomer.Valid(CustomerID, CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
             //test to see if the results is true
             Assert.AreEqual(Error, "");
 
@@ -610,7 +618,7 @@ namespace Car_Testing
             //create some test data to pass to the method
             string CustomerAddress = "0123456789012345678901234";
             //invoke the method
-            Error = ACustomer.Valid(CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
+            Error = ACustomer.Valid(CustomerID, CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
             //test to see if the results is true
             Assert.AreEqual(Error, "");
 
@@ -626,7 +634,7 @@ namespace Car_Testing
             //create some test data to pass to the method
             string CustomerAddress = "012345678901234567890123456789012345678901234567890";
             //invoke the method
-            Error = ACustomer.Valid(CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
+            Error = ACustomer.Valid(CustomerID, CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
             //test to see if the results is true
             Assert.AreNotEqual(Error, "");
 
@@ -643,7 +651,7 @@ namespace Car_Testing
             string CustomerAddress = "";
             CustomerAddress = CustomerAddress.PadRight(500, 'a');
             //invoke the method
-            Error = ACustomer.Valid(CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
+            Error = ACustomer.Valid(CustomerID, CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
             //test to see if the results is true
             Assert.AreNotEqual(Error, "");
 
@@ -659,7 +667,7 @@ namespace Car_Testing
             //create some test data to pass to the method
             string CustomerTelNumber = "";
             //invoke the method
-            Error = ACustomer.Valid(CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
+            Error = ACustomer.Valid(CustomerID, CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
             //test to see if the results is true
             Assert.AreNotEqual(Error, "");
 
@@ -675,7 +683,7 @@ namespace Car_Testing
             //create some test data to pass to the method
             string CustomerTelNumber = "a";
             //invoke the method
-            Error = ACustomer.Valid(CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
+            Error = ACustomer.Valid(CustomerID, CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
             //test to see if the results is true
             Assert.AreEqual(Error, "");
 
@@ -691,7 +699,7 @@ namespace Car_Testing
             //create some test data to pass to the method
             string CustomerTelNumber = "aa";
             //invoke the method
-            Error = ACustomer.Valid(CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
+            Error = ACustomer.Valid(CustomerID, CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
             //test to see if the results is true
             Assert.AreEqual(Error, "");
 
@@ -706,7 +714,7 @@ namespace Car_Testing
             //create some test data to pass to the method
             string CustomerTelNumber = "01234567890";
             //invoke the method
-            Error = ACustomer.Valid(CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
+            Error = ACustomer.Valid(CustomerID, CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
             //test to see if the results is true
             Assert.AreEqual(Error, "");
 
@@ -722,7 +730,7 @@ namespace Car_Testing
             //create some test data to pass to the method
             string CustomerTelNumber = "01234567890";
             //invoke the method
-            Error = ACustomer.Valid(CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
+            Error = ACustomer.Valid(CustomerID, CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
             //test to see if the results is true
             Assert.AreEqual(Error, "");
 
@@ -738,7 +746,7 @@ namespace Car_Testing
             //create some test data to pass to the method
             string CustomerTelNumber = "0123454";
             //invoke the method
-            Error = ACustomer.Valid(CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
+            Error = ACustomer.Valid(CustomerID, CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
             //test to see if the results is true
             Assert.AreEqual(Error, "");
 
@@ -754,7 +762,7 @@ namespace Car_Testing
             //create some test data to pass to the method
             string CustomerTelNumber = "0123456789012";
             //invoke the method
-            Error = ACustomer.Valid(CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
+            Error = ACustomer.Valid(CustomerID, CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
             //test to see if the results is true
             Assert.AreNotEqual(Error, "");
 
@@ -771,12 +779,131 @@ namespace Car_Testing
             string CustomerTelNumber = "";
             CustomerTelNumber = CustomerTelNumber.PadRight(500, 'a');
             //invoke the method
-            Error = ACustomer.Valid(CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
+            Error = ACustomer.Valid(CustomerID, CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
             //test to see if the results is true
             Assert.AreNotEqual(Error, "");
 
         }
 
+        [TestMethod]
+        public void CustomerIDMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //string variable to store any error message
+            String Error = "";
+            //this should fail
+            string CustomerID = "0";
+            //invoke the method
+            Error = ACustomer.Valid(CustomerID, CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
 
+        [TestMethod]
+        public void CustomerIDMin()
+        {
+            //create an instance of the class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //string variable to store any error message
+            String Error = "";
+            //this should fail
+            string CustomerID = "1" ;
+            //invoke the method
+            Error = ACustomer.Valid(CustomerID, CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerIDMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //string variable to store any error message
+            String Error = "";
+            //this should fail
+            string CustomerID = "2";
+            //invoke the method
+            Error = ACustomer.Valid(CustomerID, CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerIDMid()
+        {
+            //create an instance of the class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //string variable to store any error message
+            String Error = "";
+            //this should fail
+            string CustomerID = "250";
+            //invoke the method
+            Error = ACustomer.Valid(CustomerID, CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerIDMaxLessOne()
+        {
+            //create an instance of the class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //string variable to store any error message
+            String Error = "";
+            //this should fail
+            string CustomerID = "499";
+            //invoke the method
+            Error = ACustomer.Valid(CustomerID, CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerIDMax()
+        {
+            //create an instance of the class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //string variable to store any error message
+            String Error = "";
+            //this should fail
+            string CustomerID = "500";
+            //invoke the method
+            Error = ACustomer.Valid(CustomerID, CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerIDMaxPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //string variable to store any error message
+            String Error = "";
+            //this should fail
+            string CustomerID = "501";
+            //invoke the method
+            Error = ACustomer.Valid(CustomerID, CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerIDExtremeMax()
+        {
+            //create an instance of the class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //string variable to store any error message
+            String Error = "";
+            //this should fail
+            string CustomerID = "";
+            CustomerID = CustomerID.PadRight(500, 'a');
+            //invoke the method
+            Error = ACustomer.Valid(CustomerID, CustomerName, CustomerTelNumber, CustomerAddress, DateJoined);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
     }
 }
