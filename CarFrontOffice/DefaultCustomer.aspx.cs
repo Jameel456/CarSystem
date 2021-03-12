@@ -35,4 +35,66 @@ public partial class DefaultCustomer : System.Web.UI.Page
     {
 
     }
+
+    protected void btnAdd_Click(object sender, EventArgs e)
+    {
+        //store -1 into the session object to indicate this is a new record
+        Session["CustomerID"] = -1;
+        //redirect to the data enrty page
+        Response.Redirect("ACustomer.aspx");
+    }
+
+    protected void btnCustomerDelete_Click(object sender, EventArgs e)
+    {
+        //var to store the primary key value of the record to be deleted
+        Int32 CustomerID;
+        //if a record has been selected from the list
+        if(lstCustomers.SelectedIndex != -1)
+        {
+            //get the primary key value of the record delete
+            CustomerID = Convert.ToInt32(lstCustomers.SelectedValue);
+            //store the data in the session object
+            Session["CustomerID"] = CustomerID;
+            //redirecr to the delete page
+            Response.Redirect("DeleteCustomer.aspx");
+            
+        }
+        else //if no record has been selected
+        {
+            //display an error
+            lblErrorCustomer.Text = "Please select a record to delete from the list";
+        }
+    }
+
+    protected void btnDisplayAllCustomer_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void btnApplyCustomer_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void btnEdit_Click(object sender, EventArgs e)
+    {
+        //var to store the primary key value of the record to be deleted
+        Int32 CustomerID;
+        //if a record has been selected from the list
+        if (lstCustomers.SelectedIndex != -1)
+        {
+            //get the primary key value of the record to edit
+            CustomerID = Convert.ToInt32(lstCustomers.SelectedValue);
+            //store the data in the session object
+            Session["CustomerID"] = CustomerID;
+            //redirecr to the delete page
+            Response.Redirect("ACustomer.aspx");
+        }
+        else
+             //if no record has been selected
+        {
+            //display an error
+            lblErrorCustomer.Text = "Please select a record to delete from the list";
+        }
+    }
 }

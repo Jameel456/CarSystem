@@ -227,7 +227,7 @@ namespace CarClasses
                 catch
                 {
                     //record the error
-                    Error = Error + "the record was not a valid  :";
+                    Error = Error + "the record was not a valid record :";
                 }
 
 
