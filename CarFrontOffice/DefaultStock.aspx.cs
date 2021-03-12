@@ -20,7 +20,7 @@ public partial class DefaultStock : System.Web.UI.Page
 
     void DisplayStocks()
     {
-        //create an instance of the county collection
+        //create an instance of the county collectionhello
         clsStockCollection Stocks = new clsStockCollection();
         //set the data source to the list of counties in the collection
         lstStock.DataSource = Stocks.StockList;
