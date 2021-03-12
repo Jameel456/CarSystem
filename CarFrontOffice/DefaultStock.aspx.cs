@@ -20,7 +20,7 @@ public partial class DefaultStock : System.Web.UI.Page
 
     void DisplayStocks()
     {
-        //create an instance of the county collection
+        //create an instance of the county collectionhello
         clsStockCollection Stocks = new clsStockCollection();
         //set the data source to the list of counties in the collection
         lstStock.DataSource = Stocks.StockList;
@@ -44,7 +44,7 @@ public partial class DefaultStock : System.Web.UI.Page
         Response.Redirect("AStock.aspx");
     }
 
- SufyaanNewBranchOG
+
     protected void btnDelete_Click(object sender, EventArgs e)
     {
         //var to store the primary key value of the record to be deleted
@@ -88,9 +88,6 @@ public partial class DefaultStock : System.Web.UI.Page
             lblError.Text = "Please select a record to edit from the list";
         }
 
-    protected void btnDisplayAll_Click(object sender, EventArgs e)
-    {
-
- master
+    
     }
 }
