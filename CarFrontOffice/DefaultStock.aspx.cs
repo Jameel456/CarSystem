@@ -44,47 +44,47 @@ public partial class DefaultStock : System.Web.UI.Page
         Response.Redirect("AStock.aspx");
     }
 
-    protected void btnDelete_Click(object sender, EventArgs e)
-    {
-        //var to store the primary key value of the record to be deleted
-        Int32 ModelNo;
-        //if a record has beeen selectedf from the list
-        if (lstStock.SelectedIndex != -1)
-        {
-            //get the primary key value of the record to delete
-            ModelNo = Convert.ToInt32(lstStock.SelectedValue);
-            //store the data in session ibject
-            Session["ModelNo"] = ModelNo;
-            //redirect to the delete page
-            Response.Redirect("DeleteStock.aspx");
-        }
-        else //if no record has been selected
-        {
-            //display error
-            lblError.Text = "Please select a record to edit from the list";
-        }
-    }
+    //protected void btnDelete_Click(object sender, EventArgs e)
+    //{
+    //    //var to store the primary key value of the record to be deleted
+    //    Int32 ModelNo;
+    //    //if a record has beeen selectedf from the list
+    //    if (lstStock.SelectedIndex != -1)
+    //    {
+    //        //get the primary key value of the record to delete
+    //        ModelNo = Convert.ToInt32(lstStock.SelectedValue);
+    //        //store the data in session ibject
+    //        Session["ModelNo"] = ModelNo;
+    //        //redirect to the delete page
+    //        Response.Redirect("DeleteStock.aspx");
+    //    }
+    //    else //if no record has been selected
+    //    {
+    //        //display error
+    //        lblError.Text = "Please select a record to edit from the list";
+    //    }
+    //}
 
 
 
-    protected void btnEdit_Click(object sender, EventArgs e)
-    {
-        //var to store the primary key value of the record to be deleted
-        Int32 ModelNo;
-        //if a record has beeen selectedf from the list
-        if (lstStock.SelectedIndex != -1) 
-        {
-            //get the primary key value of the record to delete
-            ModelNo = Convert.ToInt32(lstStock.SelectedValue);
-            //store the data in session ibject
-            Session["ModelNo"] = ModelNo;
-            //redirect to the delete page
-            Response.Redirect("AStock.aspx");
-        }
-        else //if no record has been selected
-        {
-            //display error
-            lblError.Text = "Please select a record to edit from the list";
-        }
-    }
+    //protected void btnEdit_Click(object sender, EventArgs e)
+    //{
+    //    //var to store the primary key value of the record to be deleted
+    //    Int32 ModelNo;
+    //    //if a record has beeen selectedf from the list
+    //    if (lstStock.SelectedIndex != -1) 
+    //    {
+    //        //get the primary key value of the record to delete
+    //        ModelNo = Convert.ToInt32(lstStock.SelectedValue);
+    //        //store the data in session ibject
+    //        Session["ModelNo"] = ModelNo;
+    //        //redirect to the delete page
+    //        Response.Redirect("AStock.aspx");
+    //    }
+    //    else //if no record has been selected
+    //    {
+    //        //display error
+    //        lblError.Text = "Please select a record to edit from the list";
+    //    }
+    //}
 }
