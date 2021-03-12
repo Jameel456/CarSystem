@@ -44,6 +44,7 @@ public partial class DefaultStock : System.Web.UI.Page
         Response.Redirect("AStock.aspx");
     }
 
+ SufyaanNewBranchOG
     protected void btnDelete_Click(object sender, EventArgs e)
     {
         //var to store the primary key value of the record to be deleted
@@ -86,5 +87,10 @@ public partial class DefaultStock : System.Web.UI.Page
             //display error
             lblError.Text = "Please select a record to edit from the list";
         }
+
+    protected void btnDisplayAll_Click(object sender, EventArgs e)
+    {
+
+ master
     }
 }
