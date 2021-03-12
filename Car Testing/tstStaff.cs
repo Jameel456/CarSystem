@@ -14,7 +14,7 @@ namespace Car_Testing
         //create some test data to pass to the method
         string StaffName = "Hamzah";
         string StaffAddress = "1 Leicester Road";
-        string StaffTelNumber = "0787172872";
+        string StaffTelNumber = "07871740971";
         string DateJoined = DateTime.Now.Date.ToString();
         string StaffID = 1.ToString();
         
@@ -88,7 +88,7 @@ namespace Car_Testing
             //create an instance of the class we want to create
             clsStaff AStaff = new clsStaff();
             //create some test data to assign to the property
-            string TestData = "07871737893";
+            string TestData = "07871740971";
             //assign the data to the property
             AStaff.StaffTelNumber = TestData;
             //test to see that the two values are the same
