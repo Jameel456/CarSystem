@@ -18,10 +18,10 @@
         <asp:TextBox ID="txtStaffAddress" runat="server" style="z-index: 1; left: 183px; top: 152px; position: absolute; height: 17px; width: 140px;"></asp:TextBox>
         <asp:TextBox ID="txtDateJoined" runat="server" style="z-index: 1; left: 180px; top: 252px; position: absolute; height: 17px; width: 138px;"></asp:TextBox>
         <asp:Label ID="lblDateJoined" runat="server" style="z-index: 1; left: 8px; top: 253px; position: absolute" Text="Date Joined"></asp:Label>
-        <asp:CheckBox runat="server" style="z-index: 1; left: 16px; top: 281px; position: absolute" Text="Active" />
+        <asp:CheckBox runat="server" style="z-index: 1; left: 16px; top: 281px; position: absolute" Text="Active" ID="chkActive" />
         <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 23px; top: 317px; position: absolute"></asp:Label>
         
-        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 199px; top: 345px; position: absolute; height: 28px;" Text="Cancel" />
+        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 199px; top: 344px; position: absolute; height: 28px;" Text="Cancel" OnClick="btnCancel_Click" />
         
         <asp:TextBox ID="txtStaffID" runat="server" style="z-index: 1; left: 186px; top: 65px; position: absolute; width: 140px;"></asp:TextBox>
         <p>
