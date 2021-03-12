@@ -17,13 +17,14 @@
         <p>
         <asp:TextBox ID="txtCustomerSearch" runat="server" Height="16px" Width="237px"></asp:TextBox>
         </p>
-        <asp:Button ID="btnDisplayAllCustomer" runat="server" style="z-index: 1; left: 128px; top: 342px; position: absolute; right: 318px" Text="Display All" />
-        <asp:Button ID="btnApplyCustomer" runat="server" Text="Apply" Width="56px" />
+        <asp:Button ID="btnDisplayAllCustomer" runat="server" style="z-index: 1; left: 128px; top: 342px; position: absolute; right: 318px" Text="Display All" OnClick="btnDisplayAllCustomer_Click" />
+        <asp:Button ID="btnApplyCustomer" runat="server" Text="Apply" Width="56px" OnClick="btnApplyCustomer_Click" />
         <p>
-            <asp:Button ID="btnAdd" runat="server" style="z-index: 1; left: 21px; top: 400px; position: absolute; right: 475px; height: 29px" Text="Add" />
-            <asp:Button ID="btnEdit" runat="server" style="z-index: 1; left: 76px; top: 400px; position: absolute; right: 427px" Text="Edit" />
-            <asp:Button ID="btnCustomerDelete" runat="server" style="z-index: 1; left: 137px; top: 401px; position: absolute" Text="Delete" />
+            <asp:Button ID="btnAdd" runat="server" style="z-index: 1; left: 21px; top: 400px; position: absolute; right: 475px; height: 29px" Text="Add" OnClick="btnAdd_Click" />
+            <asp:Button ID="btnEdit" runat="server" style="z-index: 1; left: 76px; top: 400px; position: absolute; right: 427px" Text="Edit" OnClick="btnEdit_Click" />
+            <asp:Button ID="btnCustomerDelete" runat="server" style="z-index: 1; left: 137px; top: 401px; position: absolute" Text="Delete" OnClick="btnCustomerDelete_Click" />
         </p>
+        <asp:Label ID="lblErrorCustomer" runat="server"></asp:Label>
     </form>
 </body>
 </html>
