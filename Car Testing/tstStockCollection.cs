@@ -30,7 +30,6 @@ namespace Car_Testing
             clsStock TestItem = new clsStock();
             //set its propertties
             TestItem.Availability = true;
-            TestItem.ModelNo = 1;
             TestItem.CarModel = "Mercedes A Class";
             TestItem.BHP = "120 BHP";
             TestItem.Price = 1;
@@ -54,7 +53,6 @@ namespace Car_Testing
             clsStock TestStock = new clsStock();
             //set the properties of the test object
             TestStock.Availability = true;
-            TestStock.ModelNo = 1;
             TestStock.CarModel = "Mercedes A Class";
             TestStock.BHP = "120 BHP";
             TestStock.Price = 1;
@@ -76,7 +74,6 @@ namespace Car_Testing
             clsStock TestItem = new clsStock();
             //set its properties
             TestItem.Availability = true;
-            TestItem.ModelNo = 1;
             TestItem.CarModel = "Mercedes A Class";
             TestItem.BHP = "120 BHP";
             TestItem.Price = 1;
@@ -100,8 +97,7 @@ namespace Car_Testing
             Int32 PrimaryKey = 0;
             //set its properties
             TestItem.Availability = true;
-            TestItem.ModelNo = 1;
-            TestItem.CarModel = "Mercedes A Class Test Again";
+            TestItem.CarModel = "Mercedes A Class Test ADD function";
             TestItem.BHP = "420 BHP";
             TestItem.Price = 1;
             TestItem.DateAdded = DateTime.Now.Date;
@@ -115,6 +111,127 @@ namespace Car_Testing
             Assert.AreEqual(AllStocks.ThisStock, TestItem);
         }
 
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsStockCollection AllStocks = new clsStockCollection();
+            //create the item of the test data
+            clsStock TestItem = new clsStock();
+            //var to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.Availability = true;
+            TestItem.CarModel = "Mercedes A Class Test ADD function";
+            TestItem.BHP = "420 BHP";
+            TestItem.Price = 1;
+            TestItem.DateAdded = DateTime.Now.Date;
+            //set this address to the test data
+            AllStocks.ThisStock = TestItem;
+            //add the record
+            PrimaryKey = AllStocks.Add();
+            //set the pimrary key of the test date
+            TestItem.ModelNo = PrimaryKey;
+            //find the record
+            AllStocks.ThisStock.Find(PrimaryKey);
+            //delete the record
+            AllStocks.Delete();
+            //now find the record
+            Boolean Found = AllStocks.ThisStock.Find(PrimaryKey);
+            //test to see that te record was not found
+            Assert.IsFalse(Found);
+        }
+
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsStockCollection AllStocks = new clsStockCollection();
+            //create the item of the test data
+            clsStock TestItem = new clsStock();
+            //var to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.Availability = true;
+            TestItem.CarModel = "Mercedes A Class Test ADD function";
+            TestItem.BHP = "420 BHP";
+            TestItem.Price = 1;
+            TestItem.DateAdded = DateTime.Now.Date;
+            //set this address to the test data
+            AllStocks.ThisStock = TestItem;
+            //add the record
+            PrimaryKey = AllStocks.Add();
+            //set the pimrary key of the test date
+            TestItem.ModelNo = PrimaryKey;
+            //modify test data
+            TestItem.Availability = false;
+            TestItem.CarModel = "Mercedes A Class Test ADD function";
+            TestItem.BHP = "420 BHP";
+            TestItem.Price = 1;
+            TestItem.DateAdded = DateTime.Now.Date;
+            //set the record based on the new test data
+            AllStocks.ThisStock = TestItem;
+            //update the record
+            AllStocks.Update();
+            //find the record
+            AllStocks.ThisStock.Find(PrimaryKey);
+            //test to see this stock matches the test data
+            Assert.AreEqual(AllStocks.ThisStock, TestItem);
+        }
+
+        [TestMethod]
+        public void ReportByCarModelMethodOK()
+        {
+            //create an instance of the class containing unflitered results
+            clsStockCollection AllStocks = new clsStockCollection();
+            //create an instance of the filtered data
+            clsStockCollection FilteredStocks = new clsStockCollection();
+            //apply a bank string (should return all records);
+            FilteredStocks.ReportByCarModel("");
+            //test to see that the two values are the same
+            Assert.AreEqual(AllStocks.Count, FilteredStocks.Count);
+        }
+
+        [TestMethod]
+        public void ReportByCarModelNoneFound()
+        {
+            clsStockCollection FilteredStocks = new clsStockCollection();
+            //apply for a car model that dont exsist
+            FilteredStocks.ReportByCarModel("xxxxxxxx x xxx");
+            //test t o see that there are no records
+            Assert.AreEqual(0, FilteredStocks.Count);
+        }
+
+        [TestMethod]
+        public void ReportByPostCodeTestDataFound()
+        {
+            //create an insatcne of the filrted data
+            clsStockCollection FilteredStocks = new clsStockCollection();
+            //var to store outcome
+            Boolean OK = true;
+            //apply a post code that doesnt exist
+            FilteredStocks.ReportByCarModel("xxxxxxx x xxxx");
+            //check that the correct number of records are found
+            if (FilteredStocks.Count == 2)
+            {
+                //check that the first record is ID 36
+                if (FilteredStocks.StockList[0].ModelNo != 149)
+                {
+                    OK = false;
+                }
+                //check that the first record is ID 150
+                if (FilteredStocks.StockList[1].ModelNo != 150)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            //test to see that there are no records
+            Assert.IsTrue(OK);
+        }
 
     }
 }
