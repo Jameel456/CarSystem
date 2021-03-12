@@ -138,27 +138,34 @@ namespace CarClasses
             }
         }
 
-        public string Valid(string carModel, string bHP, int price, string dateAdded)
+        public string Valid(string carModel, string bHP, string price, string dateAdded)
         {
             //create a string variable to store the error
             String Error = "";
             //create a temporary varibale to store datat values
             DateTime DateTemp;
+            Int32 IntTemp;
             //this sees if the string is less than 1 or more than 10000000
-            if (price < 1 | price > 100000000)
-            {
-                //records the error
-                Error = Error + "The price number must be between 1 and 100 MILLION : ";
-            }
-
             try
             {
-                Int32 Temp;
-                Temp = Convert.ToInt32(price);
+                //copy the date added value to the IntTemp variable
+                IntTemp = Convert.ToInt32(price);
+                if (IntTemp < 1)
+                {
+                    Error = Error + "The price cannot be less than 1 : ";
+                }
+
+                //check to see if the date is greater than today's date
+                if (IntTemp > 10000000)
+                {
+                    //record the error
+                    Error = Error + "The price cannot be more than 10000000 (10MIL) : ";
+                }
             }
             catch
             {
-                Error = Error + "The price must be a number : ";
+                //record the error
+                Error = Error + "The price was no a valid price : ";
             }
 
             //if the BHP is blank

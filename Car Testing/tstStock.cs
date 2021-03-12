@@ -12,7 +12,7 @@ namespace Car_Testing
             //create some test data to pass to the method
             string CarModel = "Test Car";
             string BHP = "500 BHP";
-            Int32 Price = 100000;
+            string Price = 100000.ToString();
             string DateAdded = DateTime.Now.Date.ToString();
         
         [TestMethod]
@@ -614,9 +614,11 @@ namespace Car_Testing
             clsStock AStock = new clsStock();
             //string variable to store any error message
             String Error = "";
-            //this should fail
-            Int32 Price = 0;
-            //invoke the method
+            Int32 TestPrice;
+            //set the date totodays date
+            TestPrice = 0;
+            //convert the date variable to a string variable
+            string Price = TestPrice.ToString();
             Error = AStock.Valid(CarModel, BHP, Price, DateAdded);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
@@ -629,8 +631,11 @@ namespace Car_Testing
             clsStock AStock = new clsStock();
             //string variable to store any error message
             String Error = "";
-            //this should pass
-            Int32 Price = 1;
+            Int32 TestPrice;
+            //set the date totodays date
+            TestPrice = 1;
+            //convert the date variable to a string variable
+            string Price = TestPrice.ToString();
             //invoke the method
             Error = AStock.Valid(CarModel, BHP, Price, DateAdded);
             //test to see that the result is correct
@@ -644,9 +649,11 @@ namespace Car_Testing
             clsStock AStock = new clsStock();
             //string variable to store any error message
             String Error = "";
-            //this should pass
-            Int32 Price = 2;
-            //invoke the method
+            Int32 TestPrice;
+            //set the date totodays date
+            TestPrice = 2;
+            //convert the date variable to a string variable
+            string Price = TestPrice.ToString();
             Error = AStock.Valid(CarModel, BHP, Price, DateAdded);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
@@ -659,9 +666,11 @@ namespace Car_Testing
             clsStock AStock = new clsStock();
             //string variable to store any error message
             String Error = "";
-            //this should pass
-            Int32 Price = 99999998;
-            //invoke the method
+            Int32 TestPrice;
+            //set the date totodays date
+            TestPrice = 9999999;
+            //convert the date variable to a string variable
+            string Price = TestPrice.ToString();
             Error = AStock.Valid(CarModel, BHP, Price, DateAdded);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
@@ -674,9 +683,11 @@ namespace Car_Testing
             clsStock AStock = new clsStock();
             //string variable to store any error message
             String Error = "";
-            //this should pass
-            Int32 Price = 99999999;
-            //invoke the method
+            Int32 TestPrice;
+            //set the date totodays date
+            TestPrice = 10000000;
+            //convert the date variable to a string variable
+            string Price = TestPrice.ToString();
             Error = AStock.Valid(CarModel, BHP, Price, DateAdded);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
@@ -689,12 +700,14 @@ namespace Car_Testing
             clsStock AStock = new clsStock();
             //string variable to store any error message
             String Error = "";
-            //this should fail
-            Int32 Price = 100000000;
-            //invoke the method
+            Int32 TestPrice;
+            //set the date totodays date
+            TestPrice = 100000000;
+            //convert the date variable to a string variable
+            string Price = TestPrice.ToString();
             Error = AStock.Valid(CarModel, BHP, Price, DateAdded);
             //test to see that the result is correct
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -704,12 +717,29 @@ namespace Car_Testing
             clsStock AStock = new clsStock();
             //string variable to store any error message
             String Error = "";
-            //this should fail
-            Int32 Price = 500000;
-            //invoke the method
+            Int32 TestPrice;
+            //set the date totodays date
+            TestPrice = 5000000;
+            //convert the date variable to a string variable
+            string Price = TestPrice.ToString();
             Error = AStock.Valid(CarModel, BHP, Price, DateAdded);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PriceInvalidData()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //set the datadded toa non date value
+            string Price = "this is not a price!";
+            //invoke the method
+            Error = AStock.Valid(CarModel, BHP, Price, DateAdded);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
         }
 
     }
