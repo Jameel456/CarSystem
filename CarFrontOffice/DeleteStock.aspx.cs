@@ -34,5 +34,10 @@ public partial class DeleteStock : System.Web.UI.Page
         Response.Redirect("DefaultStock.aspx");
     }
 
-  
+
+
+    protected void bntNo_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("DefaultStock.aspx");
+    }
 }

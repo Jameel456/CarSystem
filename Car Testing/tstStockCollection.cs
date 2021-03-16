@@ -210,7 +210,7 @@ namespace Car_Testing
             //var to store outcome
             Boolean OK = true;
             //apply a post code that doesnt exist
-            FilteredStocks.ReportByCarModel("xxxxxxx x xxxx");
+            FilteredStocks.ReportByCarModel("yyy");
             //check that the correct number of records are found
             if (FilteredStocks.Count == 2)
             {

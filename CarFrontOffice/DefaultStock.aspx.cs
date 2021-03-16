@@ -32,7 +32,7 @@ public partial class DefaultStock : System.Web.UI.Page
         lstStock.DataBind();
     }
 
-  
+
 
 
 
@@ -88,6 +88,55 @@ public partial class DefaultStock : System.Web.UI.Page
             lblError.Text = "Please select a record to edit from the list";
         }
 
-    
+
+    }
+
+   
+
+    Int32 DisplayStocks(string CarModelFilter)
+    {
+
+        Int32 ModelNo; //var to store the primary key
+        string CarModel; //var to store the phone type
+        string BHP; //var to store the phone number
+        DateTime DateAdded;
+        //; //create an onstance of the phone book class
+        //create an instance of the phone collection class
+        clsStockCollection StockBook = new clsStockCollection();
+        StockBook.ReportByCarModel(CarModelFilter);
+        Int32 RecordCount; // var to store the count of records
+        Int32 Index = 0; // var to store the index for the loop
+        RecordCount = StockBook.Count; // get the count of records
+        lstStock.Items.Clear();
+        while (Index < RecordCount) // while there are records to process
+        {
+            ModelNo = StockBook.StockList[Index].ModelNo; // get the primary key 
+            CarModel = StockBook.StockList[Index].CarModel; // get the phone type
+            BHP = StockBook.StockList[Index].BHP; // get the phone name
+            DateAdded = StockBook.StockList[Index].DateAdded; // get the phone name
+            //create a new entry for the list box 
+            ListItem NewEntry = new ListItem(CarModel + " " + BHP + " " + DateAdded, ModelNo.ToString());
+            lstStock.Items.Add(NewEntry); // ADD THE PHONE TO THE LIST 
+            Index++;
+
+
+
+
+
+
+        }
+        return RecordCount; //return the count of records found
+    }
+
+
+
+    protected void btnDisplayAll_Click(object sender, EventArgs e)
+    {
+        DisplayStocks();
+    }
+
+    protected void btnApply_Click1(object sender, EventArgs e)
+    {
+        DisplayStocks(txtCarModelSearch.Text);
     }
 }

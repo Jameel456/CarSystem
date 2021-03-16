@@ -82,7 +82,7 @@ namespace Car_Testing
             //create an instance of the class we want to create
             clsStock AStock = new clsStock();
             //create some test data to assign to the property
-            Int32 TestData = 1;
+            Decimal TestData = 1;
             //assign the data to the property
             AStock.Price = TestData;
             //test to see that the two values are the same
@@ -614,7 +614,7 @@ namespace Car_Testing
             clsStock AStock = new clsStock();
             //string variable to store any error message
             String Error = "";
-            Int32 TestPrice;
+            Decimal TestPrice;
             //set the date totodays date
             TestPrice = 0;
             //convert the date variable to a string variable
@@ -631,7 +631,7 @@ namespace Car_Testing
             clsStock AStock = new clsStock();
             //string variable to store any error message
             String Error = "";
-            Int32 TestPrice;
+            Decimal TestPrice;
             //set the date totodays date
             TestPrice = 1;
             //convert the date variable to a string variable
@@ -649,7 +649,7 @@ namespace Car_Testing
             clsStock AStock = new clsStock();
             //string variable to store any error message
             String Error = "";
-            Int32 TestPrice;
+            Decimal TestPrice;
             //set the date totodays date
             TestPrice = 2;
             //convert the date variable to a string variable
@@ -666,7 +666,7 @@ namespace Car_Testing
             clsStock AStock = new clsStock();
             //string variable to store any error message
             String Error = "";
-            Int32 TestPrice;
+            Decimal TestPrice;
             //set the date totodays date
             TestPrice = 9999999;
             //convert the date variable to a string variable
@@ -683,7 +683,7 @@ namespace Car_Testing
             clsStock AStock = new clsStock();
             //string variable to store any error message
             String Error = "";
-            Int32 TestPrice;
+            Decimal TestPrice;
             //set the date totodays date
             TestPrice = 10000000;
             //convert the date variable to a string variable
@@ -700,7 +700,7 @@ namespace Car_Testing
             clsStock AStock = new clsStock();
             //string variable to store any error message
             String Error = "";
-            Int32 TestPrice;
+            Decimal TestPrice;
             //set the date totodays date
             TestPrice = 100000000;
             //convert the date variable to a string variable
@@ -717,7 +717,7 @@ namespace Car_Testing
             clsStock AStock = new clsStock();
             //string variable to store any error message
             String Error = "";
-            Int32 TestPrice;
+            Decimal TestPrice;
             //set the date totodays date
             TestPrice = 5000000;
             //convert the date variable to a string variable
