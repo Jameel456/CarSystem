@@ -46,35 +46,35 @@ public partial class AStock : System.Web.UI.Page
         }
 
         //all done so redirect back to main page
-        Response.Redirect("DefaultStock.aspx");
+        //Response.Redirect("DefaultStock.aspx");
 
-        ////create a new instance of clsAstock
-        //clsStock AStock = new clsStock();
-        ////capture stock no
-        //string CarModel = txtCarModel.Text;
-        //string BHP = txtBHP.Text;
-        //string Price = txtPrice.Text;
-        //string DateAdded = txtDateAdded.Text;
-        //string Error = "";
-        ////Validate the data
-        //Error = AStock.Valid(CarModel, BHP, Price, DateAdded);
-        //if (Error == "")
-        //{
-        //    //capture the  stock no
-        //    AStock.CarModel = txtCarModel.Text;
-        //    AStock.BHP = txtBHP.Text;
-        //    AStock.Price = Convert.ToInt32(txtPrice.Text);
-        //    AStock.DateAdded = Convert.ToDateTime(txtDateAdded.Text);
-        //    //store the bjp in th esession
-        //    Session["AStock"] = AStock;
-        //    //redirect the viewer page
-        //    Response.Redirect("StockViewer.aspx");
-        //}
-        //else
-        //{
-        //    //display the error message
-        //    lblError.Text = Error;
-        //}
+        //create a new instance of clsAstock
+        clsStock AStock = new clsStock();
+        //capture stock no
+        string CarModel = txtCarModel.Text;
+        string BHP = txtBHP.Text;
+        string Price = txtPrice.Text;
+        string DateAdded = txtDateAdded.Text;
+        string Error = "";
+        //Validate the data
+        Error = AStock.Valid(CarModel, BHP, Price, DateAdded);
+        if (Error == "")
+        {
+            //capture the  stock no
+            AStock.CarModel = txtCarModel.Text;
+            AStock.BHP = txtBHP.Text;
+            AStock.Price = Convert.ToDecimal(txtPrice.Text);
+            AStock.DateAdded = Convert.ToDateTime(txtDateAdded.Text);
+            //store the bjp in th esession
+            Session["AStock"] = AStock;
+            //redirect the viewer page
+            Response.Redirect("DefaultStock.aspx");
+        }
+        else
+        {
+            //display the error message
+            lblError.Text = Error;
+        }
 
     }
     
@@ -114,7 +114,7 @@ public partial class AStock : System.Web.UI.Page
             //get the data entered by the user
             StockBook.ThisStock.CarModel = txtCarModel.Text;
             StockBook.ThisStock.BHP = txtBHP.Text;
-            StockBook.ThisStock.Price = Convert.ToInt32(txtPrice.Text);
+            StockBook.ThisStock.Price = Convert.ToDecimal(txtPrice.Text);
             StockBook.ThisStock.DateAdded = Convert.ToDateTime(txtDateAdded.Text);
             StockBook.ThisStock.Availability = chkAvailability.Checked;
             //add the record
@@ -143,7 +143,7 @@ public partial class AStock : System.Web.UI.Page
             //get the data entered by the user
             StockBook.ThisStock.CarModel = txtCarModel.Text;
             StockBook.ThisStock.BHP = txtBHP.Text;
-            StockBook.ThisStock.Price = Convert.ToInt32(txtPrice.Text);
+            StockBook.ThisStock.Price = Convert.ToDecimal(txtPrice.Text);
             StockBook.ThisStock.DateAdded = Convert.ToDateTime(txtDateAdded.Text);
             StockBook.ThisStock.Availability = chkAvailability.Checked;
             //add the record
@@ -167,10 +167,15 @@ public partial class AStock : System.Web.UI.Page
         //display the data for this record
         txtCarModel.Text = StockBook.ThisStock.CarModel;
         txtBHP.Text= StockBook.ThisStock.BHP;
-        txtPrice.Text= StockBook.ThisStock.CarModel.ToString();
+        txtPrice.Text= StockBook.ThisStock.Price.ToString();
         txtDateAdded.Text = StockBook.ThisStock.DateAdded.ToString();
         chkAvailability.Checked = StockBook.ThisStock.Availability;
     }
 
 
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("DefaultStock.aspx");
+    }
 }

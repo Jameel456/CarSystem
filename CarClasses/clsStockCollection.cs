@@ -195,7 +195,7 @@ namespace CarClasses
                 AStock.ModelNo = Convert.ToInt32(DB.DataTable.Rows[Index]["ModelNo"]);
                 AStock.CarModel = Convert.ToString(DB.DataTable.Rows[Index]["CarModel"]);
                 AStock.BHP = Convert.ToString(DB.DataTable.Rows[Index]["BHP"]);
-                AStock.Price = Convert.ToInt32(DB.DataTable.Rows[Index]["Price"]);
+                AStock.Price = Convert.ToDecimal(DB.DataTable.Rows[Index]["Price"]);
                 AStock.DateAdded = Convert.ToDateTime(DB.DataTable.Rows[Index]["DateAdded"]);
                 AStock.Availability = Convert.ToBoolean(DB.DataTable.Rows[Index]["Availability"]);
                 //add the record to the private data member

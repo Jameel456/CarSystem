@@ -75,9 +75,9 @@ namespace CarClasses
 
 
         //private data member for county no
-        private Int32 mPrice;
+        private Decimal mPrice;
         //public property for county no
-        public int Price
+        public Decimal Price
         {
             get
             {
@@ -124,7 +124,7 @@ namespace CarClasses
                 mModelNo = Convert.ToInt32(DB.DataTable.Rows[0]["ModelNo"]);
                 mCarModel = Convert.ToString(DB.DataTable.Rows[0]["CarModel"]);
                 mBHP = Convert.ToString(DB.DataTable.Rows[0]["BHP"]);
-                mPrice = Convert.ToInt32(DB.DataTable.Rows[0]["Price"]);
+                mPrice = Convert.ToDecimal(DB.DataTable.Rows[0]["Price"]);
                 mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["DateAdded"]);
                 mAvailability = Convert.ToBoolean(DB.DataTable.Rows[0]["Availability"]);
                 //return everything worked ok
@@ -144,19 +144,19 @@ namespace CarClasses
             String Error = "";
             //create a temporary varibale to store datat values
             DateTime DateTemp;
-            Int32 IntTemp;
+            Decimal DecimalTemp;
             //this sees if the string is less than 1 or more than 10000000
             try
             {
                 //copy the date added value to the IntTemp variable
-                IntTemp = Convert.ToInt32(price);
-                if (IntTemp < 1)
+                DecimalTemp = Convert.ToDecimal(price);
+                if (DecimalTemp < 1)
                 {
                     Error = Error + "The price cannot be less than 1 : ";
                 }
 
                 //check to see if the date is greater than today's date
-                if (IntTemp > 10000000)
+                if (DecimalTemp > 10000000)
                 {
                     //record the error
                     Error = Error + "The price cannot be more than 10000000 (10MIL) : ";
@@ -165,7 +165,7 @@ namespace CarClasses
             catch
             {
                 //record the error
-                Error = Error + "The price was no a valid price : ";
+                Error = Error + "The price was not a valid price : ";
             }
 
             //if the BHP is blank
