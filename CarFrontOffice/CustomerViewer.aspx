@@ -6,9 +6,9 @@
 <head runat="server">
     <title></title>
 </head>
-<body>
+<body style="background-color: #CCFFFF">
     <form id="form1" runat="server">
-        <div>
+        <div style="background-color: #CCFFFF">
         </div>
     </form>
 </body>
