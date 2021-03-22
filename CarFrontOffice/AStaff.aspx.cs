@@ -45,44 +45,45 @@ public partial class AStaff : System.Web.UI.Page
 
 
         //all done so redirect back to the main page
-        Response.Redirect("DefaultStaff.aspx");
+        
 
-        ////create a new instance of clsStaff
-        //clsStaff AStaff = new clsStaff();
-        ////capture the staff name
-        //string StaffName = txtStaffName.Text;
-        ////capture the staff address
-        //string StaffAddress = txtStaffAddress.Text;
-        ////capture the staff tel number
-        //string StaffTelNumber = txtStaffTelNumber.Text;
-        ////capture date joined
-        //string DateJoined =txtDateJoined.Text;
-        ////variable to store any error mesages
-        //string StaffID = txtStaffID.Text;
-        //string Error="";
-        ////validate the data
-        //Error = AStaff.Valid(StaffName, StaffAddress, StaffTelNumber, DateJoined, StaffID);
-        //if (Error == "")
-        //{
-        //    //capture the staff name
-        //    AStaff.StaffName = StaffName;
-        //    //capture the staff address
-        //    AStaff.StaffAddress = StaffAddress;
-        //    //capture the staff tel number
-        //    AStaff.StaffTelNumber = StaffTelNumber;
-        //    //capture date joined
-        //    AStaff.DateJoined = Convert.ToDateTime( DateJoined);
-        //    //store the address in the session object
-        //    AStaff.StaffID = Convert.ToInt32(txtStaffID);
-        //    Session["AStaff"] = AStaff;
-        //    //redirect to the viewer page 
-        //    Response.Redirect("StaffViewer.aspx");
-        //}
-        //else
-        //{
-        //    //display the error message
-        //    lblError.Text = Error;
-        //}
+        //create a new instance of clsStaff
+        clsStaff AStaff = new clsStaff();
+        //capture the staff name
+        string StaffName = txtStaffName.Text;
+        //capture the staff address
+        string StaffAddress = txtStaffAddress.Text;
+        //capture the staff tel number
+        string StaffTelNumber = txtStaffTelNumber.Text;
+        //capture date joined
+        string DateJoined = txtDateJoined.Text;
+        //variable to store any error mesages
+       // string StaffID = txtStaffID.Text;
+        string Error = "";
+        //validate the data
+        Error = AStaff.Valid(StaffName, StaffAddress, StaffTelNumber, DateJoined, "1");
+        if (Error == "")
+        {
+            //capture the staff name
+            AStaff.StaffName = StaffName;
+            //capture the staff address
+            AStaff.StaffAddress = StaffAddress;
+            //capture the staff tel number
+            AStaff.StaffTelNumber = StaffTelNumber;
+            //capture date joined
+            AStaff.DateJoined = Convert.ToDateTime(DateJoined);
+            //store the address in the session object
+            //AStaff.StaffID = Convert.ToInt32(txtStaffID);
+            Session["AStaff"] = AStaff;
+            //redirect to the viewer page 
+            // Response.Redirect("StaffViewer.aspx");
+            Response.Redirect("DefaultStaff.aspx");
+        }
+        else
+        {
+            //display the error message
+            lblError.Text = Error;
+        }
     }
 
     protected void txtStaffName_TextChanged(object sender, EventArgs e)
@@ -107,7 +108,7 @@ public partial class AStaff : System.Web.UI.Page
         //if found
         if (Found == true)
         {
-            //display the value of the staff in form           
+            //display the value of the staff in form   
             txtStaffName.Text = AStaff.StaffName;
             txtStaffAddress.Text = AStaff.StaffAddress;
             txtStaffTelNumber.Text = AStaff.StaffTelNumber;
@@ -117,7 +118,7 @@ public partial class AStaff : System.Web.UI.Page
 
     protected void btnCancel_Click(object sender, EventArgs e)
     {
-
+        Response.Redirect("DefaultStaff.aspx");
     }
 
     //funtion for adding new records

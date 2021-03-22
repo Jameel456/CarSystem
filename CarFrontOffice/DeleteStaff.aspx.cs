@@ -35,4 +35,9 @@ public partial class DeleteStaff : System.Web.UI.Page
         //redirect back to the main page
         Response.Redirect("DefaultStaff.aspx");
     }
+
+    protected void btnNoStaff_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("DefaultStaff.aspx");
+    }
 }

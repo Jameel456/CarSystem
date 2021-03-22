@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using CarClasses;
 
 public partial class DefaultStaff : System.Web.UI.Page
 {
@@ -31,13 +32,42 @@ public partial class DefaultStaff : System.Web.UI.Page
         lstStaff.DataBind();
     }
 
-  
+
 
     protected void btnApply_Click(object sender, EventArgs e)
     {
+        DisplayStaff(txtSearchStaff.Text);
 
     }
+    Int32 DisplayStaff(string StaffNameFilter)
+    {
 
+        Int32 StaffID; //var to store the primary key
+        string StaffName; //var to store the phone type
+        string StaffTelNumber; //var to store the phone number
+        string StaffAddress;
+        //; //create an onstance of the phone book class
+        //create an instance of the phone collection class
+        clsStaffCollection StaffBook = new clsStaffCollection();
+        StaffBook.ReportByStaffName(StaffNameFilter);
+        Int32 RecordCount; // var to store the count of records
+        Int32 Index = 0; // var to store the index for the loop
+        RecordCount = StaffBook.Count; // get the count of records
+        lstStaff.Items.Clear();
+        while (Index < RecordCount) // while there are records to process
+        {
+            StaffID = StaffBook.StaffList[Index].StaffID; // get the primary key 
+            StaffName = StaffBook.StaffList[Index].StaffName; // get the phone type
+            StaffTelNumber = StaffBook.StaffList[Index].StaffTelNumber; // get the phone name
+            StaffAddress = StaffBook.StaffList[Index].StaffAddress; // get the phone name
+                                                                    //create a new entry for the list box 
+            ListItem NewEntry = new ListItem(StaffName + " " + StaffAddress + " " + StaffTelNumber, StaffID.ToString());
+            lstStaff.Items.Add(NewEntry); // ADD THE STAFF TO THE LIST 
+            Index++;
+
+        }
+        return RecordCount; //return the count of records found
+    }
     protected void btnAddStaff_Click(object sender, EventArgs e)
     {
         //store -1 into the session object to indicate this is a new record
@@ -91,5 +121,10 @@ public partial class DefaultStaff : System.Web.UI.Page
             //display an error
             lblError.Text = "Please select a record to delete from the list";
         }
+    }
+
+    protected void btnDisplayAllStaff_Click(object sender, EventArgs e)
+    {
+        DisplayStaff();
     }
 }
