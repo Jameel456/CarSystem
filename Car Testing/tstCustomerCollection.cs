@@ -240,10 +240,10 @@ namespace Car_Testing
             //check that the correct number of records are found
             if (FilteredCustomerName.Count == 2)
             {
-                {
-                    OK = false;
+               // {
+                 //   OK = false;
 
-                }
+              //  }
                 //check that the first record is ID 37
                 if (FilteredCustomerName.CustomerList[0].CustomerID != 8)
                 {

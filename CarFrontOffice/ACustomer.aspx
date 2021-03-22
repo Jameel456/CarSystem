@@ -6,12 +6,12 @@
 <head runat="server">
     <title></title>
 </head>
-<body>
+<body style="background-color: #CCFFFF">
     <form id="form1" runat="server">
         <div>
             <asp:Label ID="lblCustomerID" runat="server" Text="CustomerID"></asp:Label>
             <asp:TextBox ID="txtCustomerID" runat="server"></asp:TextBox>
-            <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" Text="Find" />
+            <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" Text="Find" style="background-color: #FFCCFF" />
         </div>
         <asp:Label ID="lblCustomerName" runat="server" Text="Customer Name"></asp:Label>
         <asp:TextBox ID="txtCustomerName" runat="server"></asp:TextBox>
@@ -29,8 +29,8 @@
         <p>
             <asp:Label ID="lblError" runat="server"></asp:Label>
         </p>
-        <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" Text="OK" Width="49px" />
-        <asp:Button ID="btnCancel" runat="server" style="margin-top: 0px" Text="Cancel" OnClick="btnCancel_Click" />
+        <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" Text="OK" Width="49px" style="background-color: #FFCCFF" />
+        <asp:Button ID="btnCancel" runat="server" style="margin-top: 0px; background-color: #FFCCFF;" Text="Cancel" OnClick="btnCancel_Click" />
     </form>
 </body>
 </html>
